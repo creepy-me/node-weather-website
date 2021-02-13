@@ -1,0 +1,45 @@
+body {
+    color: #333333;
+    font-family: arial;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    color: rgb(219, 72, 153);
+    border-top: 3px solid rgb(160, 159, 159);
+    margin: 16px;
+    padding: 16px 0;
+}
+
+header {
+    color: rgb(54, 141, 163);
+    border-top: 7px solid rgb(160, 159, 159);
+    margin-top: 16px;
+    margin-bottom: 16px;
+    padding: 10px 0;
+}
+
+h1 {
+    font-size: 64px;
+    margin-bottom: 16px;
+}
+
+header a {
+    color: #38176d98;
+    margin-right: 16px;
+    text-decoration: none; 
+}
+
+.portrait {
+    width: 250px;
+}
+
+.main-content {
+    color: rgb(10, 9, 9);
+    flex-grow: 1;
+}
