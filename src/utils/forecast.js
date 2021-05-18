@@ -4,7 +4,7 @@ const forecast = (city, callback) =>{
     axios.get(url)
     .then(function ({data}) {
      
-      callback(data.weather[0].description + ' . It is ' + data.main.temp + ' degrees out. Humidity is ' + data.main.humidity + '.',undefined);
+      callback(data.weather[0].description + ' . It is ' + data.main.temp + ' degrees out. Min. temperature is ' + data.main.temp_min + ' . Max. temperature is ' + data.main.temp_max,undefined);
     })
     .catch(function (error) {
       // handle error
