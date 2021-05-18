@@ -1,5 +1,5 @@
 
-var axios = require('axios')
+/*var axios = require('axios')
 var options = {
   method: 'GET',
   url: 'https://community-open-weather-map.p.rapidapi.com/weather',
@@ -39,11 +39,12 @@ axios.request(options).then(function (response) {
 	console.log(response.data.features[0].center[0],response.data.features[0].center[1])
 }).catch(function (error) {
 	console.error(error);
-});
+});*/
 
+const forecast= require('./utils/forecast')
 
-const express= require('express')
 const path= require('path')
+const express= require('express')
 const hbs= require('hbs')
 
 const app= express()
@@ -56,13 +57,13 @@ const partialsPath= path.join(__dirname, '../template/partials')
 //set up handlebar and path for view
 app.set('view engine', 'hbs')
 app.use(express.static(publicDirectory))
-hbs.registerPartials(partialsPath)
+hbs.registerPartials(partialsPath) 
 
 //set up static directory
 app.set('views', viewsPath )
 app.get('',(req, res)=> {
     res.render('index', {
-        title: 'weather app',
+        title: 'Weather',
         name: 'Shraddha'
     })
 })
@@ -76,7 +77,7 @@ app.get('/about',(req, res)=> {
 
 app.get('/help',(req, res)=> {
     res.render('help', {
-        example: 'Help coming!',
+        helptext: 'Help coming!',
         title: 'Help',
         name: 'Shraddha'
     })
@@ -89,23 +90,32 @@ app.get('/weather',(req, res)=> {
             error:'You must enter the address!'
         })
     }
-    geocode(req.query.address, (error, {latitude, longitude, location})=> {
+    /*geocode(req.query.address, (error, {latitude, longitude, location})=> {
         if(error) {
             res.send({error})
-        }
+        }*/
 
-        forecast(latitude, longitude, (error, forecastData)=> {
-            if(error) {
+    /*forecast(latitude, longitude, (error, forecastData)=> {
+        if(error) {
                 res.send({error})
-            }
-            res.send({
-                forecast: forecastData,
-                location,
-                address: req.query.address
-            })
+        }
+        res.send({
+            forecast: forecastData,
+            location,
+            address: req.query.address
         })
-    })
+    })*/
+    forecast(req.query.address,(response,error) => {
+        if(error){
+            return res.send({error})
+        }
+        res.send({
+            forecast: response,
+            address: req.query.address
+        })
+      })
 })
+
 
 app.get('/products',(req, res)=> {
     if(!req.query.search) {

@@ -13,6 +13,7 @@ footer {
     color: rgb(219, 72, 153);
     border-top: 3px solid rgb(160, 159, 159);
     margin: 16px;
+    background-color:gainsboro;
     padding: 16px 0;
 }
 
@@ -42,4 +43,17 @@ header a {
 .main-content {
     color: rgb(10, 9, 9);
     flex-grow: 1;
+}
+
+input {
+    border: 1px solid #cccccc;
+    padding: 8px;
+}
+
+button {
+    cursor: pointer;
+    border: 1px solid #888888;
+    background: #888888;
+    color: white;
+    padding: 8px;
 }
